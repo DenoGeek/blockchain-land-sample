@@ -1,0 +1,54 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * Write your model definitions here
+ */
+
+namespace blockland
+
+// define land as an asset
+asset Land identified by landId{
+  o String landId
+  o String landRefNo
+  o String location
+  o String size
+  o String ownerId
+}
+
+asset Account identified by accountId {
+  o String accountId
+  
+}
+
+participant LandOwner identified by ownerId {
+  o String ownerId
+  o String firstName
+  o String lastName
+  o String IdNumber
+  o String PhoneNumber
+
+}
+
+participant LegalBody identified by legalId {
+  o String legalId
+
+}
+
+
+transaction LandTransfer {
+--> LandOwner from
+--> LandOwner to
+--> Land land
+}
